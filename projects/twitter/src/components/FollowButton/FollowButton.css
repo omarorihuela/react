@@ -1,0 +1,32 @@
+:root {
+  --button-background: rgb(239, 243, 244);
+  --button-background-hover: rgb(215, 219, 220);
+  margin: 5px;
+}
+
+button {
+  padding: 0px 16px;
+  border-radius: 9999px;
+  background-color: var(--button-background);
+  border: 0;
+  min-width: 32px;
+  min-height: 32px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &.stop-following {
+    background-color: #e83737a7;
+    
+    &:hover {
+      background-color: #e83737;
+
+    }
+  }
+
+  &:hover {
+    background-color: var(--button-background-hover);
+  }
+
+  transition: background-color 0.2s;
+
+}
