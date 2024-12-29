@@ -1,6 +1,10 @@
 :root {
   --button-background: rgb(239, 243, 244);
   --button-background-hover: rgb(215, 219, 220);
+  --isFollowing-text: rgb(239, 243, 244);
+  --stopFollowing-border: rgb(103, 7, 15);
+  --stopFollowing-background: rgb(244, 33, 46, 0.1);
+  --stopFollowing-text: rgb(244, 33, 46);
   margin: 5px;
 }
 
@@ -14,19 +18,21 @@ button {
   cursor: pointer;
   font-weight: bold;
 
-  &.stop-following {
-    background-color: #e83737a7;
-    
-    &:hover {
-      background-color: #e83737;
-
-    }
+  &.isFollowing {
+    background: transparent;
+    border: solid 1px var(--primary-grey);
+    color: var(--isFollowing-text)
   }
 
-  &:hover {
+  &:not(.isFollowing):hover {
     background-color: var(--button-background-hover);
   }
 
-  transition: background-color 0.2s;
+  &.isFollowing:hover {
+    border-color: var(--stopFollowing-border);
+    background-color: var(--stopFollowing-background);
+    color: var(--stopFollowing-text);
+  }
 
+  transition: all 0.2s ease;
 }

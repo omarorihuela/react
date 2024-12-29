@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './FollowButton.css';
+import clsx from 'clsx';
 
 interface ButtonProps {
   isFollow: boolean
@@ -10,25 +11,32 @@ const Button = ( { isFollow }: ButtonProps ) => {
 
   const [isFollowing, setFollowingState] = useState(isFollow);
   const [label, setLabel] = useState(isFollow ? 'Siguiendo' : 'Seguir');
+  const [leaveButton, setLeaveButton] = useState(false);
 
   const handleClick = () => {
     setLabel(isFollowing ? 'Seguir' : 'Siguiendo');
+    setLeaveButton(false);
     setFollowingState(!isFollowing);
   }
 
   const mouseEnter = () => {
     if (!isFollowing) return;
-    return setLabel('Dejar de seguir');
+    setLabel('Dejar de seguir');
   }
 
   const mouseLeve = () => {
     if (!isFollowing) return;
-    return setLabel('Siguiendo');
+    setLeaveButton(true);
+    setLabel('Siguiendo');
   }
 
-
   return (
-    <button onClick={handleClick} onMouseEnter={mouseEnter} onMouseLeave={mouseLeve}>{label}</button>
+    <button onClick={handleClick} onMouseEnter={mouseEnter} onMouseLeave={mouseLeve} 
+      className={clsx({
+        isFollowing: (isFollowing && leaveButton)
+      })} >
+        {label}
+    </button>
   )
 }
 

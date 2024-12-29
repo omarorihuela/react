@@ -1,3 +1,7 @@
+:root {
+  --primary-grey: rgb(47, 51, 54);
+}
+
 body {
   margin: 0;
   background: rgb(0, 0, 0);
